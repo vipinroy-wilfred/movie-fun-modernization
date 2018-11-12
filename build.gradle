@@ -16,10 +16,6 @@ buildscript {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 task dependenciesGraphDot {
 
     mustRunAfter "clean"
@@ -39,9 +35,9 @@ task dependenciesGraphDot {
                 Configuration compileConfig = subProject.configurations["compile"]
 
                 compileConfig
-                        .dependencies
-                        .grep { it.respondsTo("getDependencyProject") }
-                        .forEach { dotFile << """  "$subProject.name" -> "$it.dependencyProject.name"\n""" }
+                    .dependencies
+                    .grep { it.respondsTo("getDependencyProject") }
+                    .forEach { dotFile << """  "$subProject.name" -> "$it.dependencyProject.name"\n""" }
             } catch (UnknownConfigurationException ignored) {
             }
         }
