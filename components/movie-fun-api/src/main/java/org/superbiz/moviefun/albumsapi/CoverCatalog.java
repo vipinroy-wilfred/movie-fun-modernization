@@ -3,6 +3,7 @@ package org.superbiz.moviefun.albumsapi;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.http.MediaType;
 import org.superbiz.moviefun.blobstore.Blob;
 import org.superbiz.moviefun.blobstore.BlobStore;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 import static java.lang.String.format;
 
+@EnableHystrix
 public class CoverCatalog {
 
     private BlobStore blobStore;
